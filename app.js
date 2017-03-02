@@ -8,7 +8,7 @@ const config = require('./config/database');
 require('./config/passport')(passport);
 
 //connect to db
-mongoose.connect(config.database);
+mongoose.connect(process.env.MONGODB_URI || config.database);
 
 //on connection
 mongoose.connection.on('connected',()=>{
@@ -24,7 +24,8 @@ const app = express();
 
 const users = require('./routes/users');
 
-const port = 3000;
+
+const port = process.env.PORT || 4000;
 //CORS middleware
 app.use(cors());
 
