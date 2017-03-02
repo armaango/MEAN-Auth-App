@@ -8,7 +8,7 @@ const config = require('./config/database');
 require('./config/passport')(passport);
 
 //connect to db
-mongoose.connect(process.env.MONGODB_URI || config.database);
+mongoose.connect(config.database);
 
 //on connection
 mongoose.connection.on('connected',()=>{
